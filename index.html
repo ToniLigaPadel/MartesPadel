@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas Pádel Jueves</title>
+	<meta property="og:title" content="Estadísticas Pádel Jueves">
+	<meta property="og:description" content="Sigue las estadísticas, clasificación e historial de partidos de Pádel de los jueves.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/PadelRivas/JuevesPadel/refs/heads/temporada_25_26/faviconLogoJueves.png">
+	<meta property="og:url" content="https://padelrivas.github.io/JuevesPadel/">
+	<meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="faviconLogoJueves.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+	<div id="intro-video-overlay">
+		<video id="intro-video" muted playsinline autoplay preload="auto">
+			<source src="VideoIntro.mp4" type="video/mp4">
+			Tu navegador no soporta el video.
+		</video>
+		<button id="play-button">Entrar</button>
+	</div>
+
+    <header>
+        <img src="logoJueves.png" alt="Padel Jueves Logo" class="logo">
+    </header>
+
+    <main>
+        <nav class="tab-buttons">
+            <button class="tab-button active" data-tab="ranking">Clasificación</button>
+            <button class="tab-button" data-tab="player">Jugador</button>
+            <button class="tab-button" data-tab="metrics">Métricas</button>
+            <button class="tab-button" data-tab="history">Historial</button>
+        </nav>
+
+        <section id="ranking" class="tab-pane active">
+            <h2>Clasificación de Jugadores</h2>
+            <div id="ranking-container" class="table-container"></div>
+        </section>
+
+        <section id="player" class="tab-pane">
+            <h2>Estadísticas de Jugador</h2>
+            <div class="filter-controls">
+                <select id="player-select"></select>
+            </div>
+            <div id="player-profile-container" class="card"></div>
+        </section>
+
+        <section id="metrics" class="tab-pane">
+            <h2>Métricas Generales</h2>
+            <div class="chart-container">
+                <canvas id="rankingEvolutionChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="evolutionChart"></canvas>
+            </div>
+            <h2>Métricas del Equipo</h2>
+            <div id="metrics-container" class="card"></div>
+        </section>
+
+        <section id="history" class="tab-pane">
+            <h2>Historial de Partidos</h2>
+            <div class="filter-controls">
+                <select id="month-filter">
+                    <option value="">Todos los meses</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                <select id="player-filter"></select>
+                <select id="result-filter">
+                    <option value="">Todos los resultados</option>
+                    <option value="won">Ganado</option>
+                    <option value="lost">Perdido</option>
+                    <option value="tied">Empatado</option>
+                </select>
+            </div>
+            <div id="history-container" class="table-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Desarrollado con ❤️ para los amantes del pádel y amigos de los jueves.</p>
+    </footer>
+
+    <script src="backend.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
